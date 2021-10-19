@@ -30,10 +30,8 @@
         },
         methods: {
             addClass(args ,event){
-                this.currentTabComponent = args
-                // event.target.classList.toggle('activebtn')
+                this.currentTabComponent = args;
                 var current = document.getElementsByClassName("active");
-                // console.log(current[0].className);
                 current[0].className = current[0].className.replace("active", "");
                 event.target.classList.add('active');
             }
