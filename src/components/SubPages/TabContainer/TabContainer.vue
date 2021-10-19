@@ -1,12 +1,11 @@
 <template>
-    <div>
-        <h1>Tab container</h1>
-        <button @click="currentTabComponent = 'Tab1'">Repos</button>
-        <button @click="currentTabComponent = 'Tab2'">Followers</button>
-        <button @click="currentTabComponent = 'Tab3'">Following</button>
-        <!-- <keep-alive > -->
+    <div id="myDIV" class="">
+        <button class="active tabItems" @click="addClass('Tab1',$event)">Repos</button>
+        <button class="tabItems" @click="addClass('Tab2',$event)">Followers</button>
+        <button class="tabItems" @click="addClass('Tab3',$event)">Following</button>
+        <keep-alive >
             <component :is="currentTabComponent" :singleUser="singleUser"></component>
-        <!-- </keep-alive> -->
+        </keep-alive>
     </div>
 </template>
 
@@ -29,9 +28,33 @@
                 currentTabComponent: "Tab1",
             }
         },
+        methods: {
+            addClass(args ,event){
+                this.currentTabComponent = args
+                // event.target.classList.toggle('activebtn')
+                var current = document.getElementsByClassName("active");
+                // console.log(current[0].className);
+                current[0].className = current[0].className.replace("active", "");
+                event.target.classList.add('active');
+            }
+        }
     }
 </script>
 
 <style  scoped>
+.active{
+    color: blue;
+    font-weight: bold;
+    border-top: 1px solid rgba(44, 43, 43, 0.658);
+    border-left: 1px solid rgba(44, 43, 43, 0.658);
+    border-right: 1px solid rgba(44, 43, 43, 0.658);
+    border-bottom: 1px solid white !important;
 
+}
+.tabItems{
+    padding : 20px 40px;
+    margin : 10px 0;
+    border-bottom: 1px solid rgba(44, 43, 43, 0.658);
+
+}
 </style>

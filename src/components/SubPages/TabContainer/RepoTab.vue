@@ -27,7 +27,7 @@ import RepoCard from '../../Cards/RepoCard.vue';
 
     export default {
         components: { RepoCard },
-        name : "Tab1",
+        name : "RepoTab",
         props : ["singleUser"],
         data () {
             return{
@@ -35,10 +35,9 @@ import RepoCard from '../../Cards/RepoCard.vue';
             }
         },
         created : async function () {
-            const res = await getUserInfoByUrl(this.singleUser.repos_url);
-            console.log("I was here", res);
+            let url = `https://api.github.com/users/${this.$route.params.id}/repos`
+            const res = await getUserInfoByUrl(url);
               if (res.success){
-                  console.log(res.response)
                   this.repoUrl = res.response
               }
           

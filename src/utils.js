@@ -19,7 +19,6 @@ export const getUserInfo = async (arg) => {
 };
 
 export const getUserInfoByUrl = async (url) => {
-  console.log("herreee", url);
   try {
     const result = await axios.get(url);
     return {

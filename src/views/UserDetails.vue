@@ -84,7 +84,7 @@
               </div>
             </div>
             <span v-if="singleUser">
-              <TabContainer :singleUser="singleUser" />
+              <TabContainer :singleUser="singleUser"/>
             </span>
 
             <!-- {singleUser.blog ? (
@@ -116,14 +116,13 @@ import TabContainer from '../components/SubPages/TabContainer/TabContainer.vue';
         components : {TabContainer},
         data(){
             return{
-                singleUser : {}
+                singleUser : {},
             }
         },
         created: async function () {
             const res = await getUserInfo(this.$route.params.id);
 
             if (res.success){
-                // console.log(res.response)
                 this.singleUser = res.response
             }
         }
